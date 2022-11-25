@@ -4,10 +4,10 @@
     - name: install nginx
       apt: name=nginx update_cache=yes
     - name: copy nginx config file
-      copy: src=/root/githubjenk2/nginx.conf dest=/etc/nginx/sites-available/default
+      copy: src=/var/lib/jenkins/workspace/dz7/code/nginx.conf dest=/etc/nginx/sites-available/default
     - name: enable configuration
       file: dest=/etc/nginx/sites-enabled/default src=/etc/nginx/sites-available/default state=link
     - name: copy index.html
-      template: src=/root/githubjenk2/index.html dest=/usr/share/nginx/html/index.html mode=0664
+      template: src=/var/lib/jenkins/workspace/dz7/site/index.html dest=/usr/share/nginx/html/index.html mode=0664
     - name: restart nginx
       service: name=nginx state=restarted
